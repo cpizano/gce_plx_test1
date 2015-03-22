@@ -90,8 +90,8 @@ func reg_handler(w http.ResponseWriter, r *http.Request) {
 func lst_handler(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "text/plain; charset=utf-8")
     c := appengine.NewContext(r)
-    q := datastore.NewQuery("RegNode").Ancestor(RegRootKey(c)).Order("-Date").Limit(10)
-    registrations := make([]RegNode, 0, 10)
+    q := datastore.NewQuery("RegNode").Ancestor(RegRootKey(c)).Order("-Date").Limit(20)
+    registrations := make([]RegNode, 0, 20)
     _, err := q.GetAll(c, &registrations)
     if err != nil {
         rp_Error(w, c_err_db_query_fail)
